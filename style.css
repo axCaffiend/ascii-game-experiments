@@ -1,0 +1,139 @@
+:root {
+    --border-green-1px: solid 1px green;
+    --main-font: 'Space Mono', Courier, monospace;
+}
+
+body {
+    font-family: var(--main-font);
+    font-size: 1rem;
+    background-color: #000;
+}
+
+
+/* ---- OUTPUT BOX ----- */
+
+/* Container */
+.display {
+    display: flex;
+    flex-flow: column nowrap;
+    margin: 1rem auto;
+    content: "";
+    width: 250px;
+    height: 250px;
+    color: green;
+    text-align: center;
+    border: var(--border-green-1px);
+}
+
+/* Text output goes here */
+.output {
+    /* background-color: blue; */
+    border-top: var(--border-green-1px);
+    width: 100%;
+    flex-grow: 1;
+    align-content: center;
+}
+
+/* Text output <p> element */
+.display-text {
+    margin: 0 auto;
+    color: #FFF;
+    font-size: 1em;
+    word-break: break-all;
+    white-space: pre-wrap;
+    width: 3ch;
+    height: 3em;
+    border: solid 1px red;
+    line-height: 1em;
+}
+
+.display-text-2 {
+    /* border: solid 1px purple; */
+    margin: auto;
+    width: 3ch;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    grid-template-columns: repeat(3, 1fr);
+    line-height: 95%;
+    animation: 
+        float 1s ease-in-out infinite alternate, 
+        spin 15s linear infinite;
+}
+
+@keyframes float {
+    0% {
+        gap: 0rem;
+        font-size: 1rem;
+    }
+    100% {
+        gap: 0.1rem;
+        font-size: 1.25rem;
+        color: rgb(45, 213, 45);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* ---- USER CONTROLS ---- */
+
+.control {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: fit-content;
+    margin: 1rem auto;
+    justify-content: center;
+    padding: 0.25rem;
+    border: double 0.25rem green;
+}
+
+.user-input {
+    /* background-color: grey; */
+    background-color: transparent;
+    color: green;
+    border: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    width: 1em;
+    height: 1.25em;
+    text-align: center;
+    align-content: center;
+    font-family: var(--main-font);
+    font-size: 2rem;
+}
+
+.user-input:focus {
+    outline: none;
+    background: green;
+    color: #000;
+}
+
+/* ----- BACKGROUND EFFECTS ----- */
+
+.ripple {
+    background: repeating-linear-gradient(
+        0deg, 
+        rgba(2,0,36,0), 
+        rgba(43,121,9,0.20) 1.5%, 
+        rgba(0,0,0,0) 2%,
+        rgba(97, 255, 186, 0.132) 3% );
+    background-position-y: 0%;
+    animation: ripple 5s linear infinite forwards;
+}
+
+@keyframes ripple {
+    0% {
+        background-position-y: 0;
+    }
+    100% {
+        background-position-y: 60px;
+    }
+}
