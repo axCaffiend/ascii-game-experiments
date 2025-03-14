@@ -1,15 +1,17 @@
+const userControl = document.querySelector(".control");
 const output = document.querySelector(".display .output");
+const displayText2 = output.appendChild(document.createElement("div"));
+displayText2.classList.add("display-text-2");
 
-let userControl = document.querySelector(".control");
+// Array for getting text input values in userControl panel
 let userInput = [];
 
 // Upddates userInput array on user inputs change
-addEventListener("input", (e) => {
+userControl.addEventListener("input", (e) => {
 
         // Reset
         console.log(e.target.name + e.data);
         userInput = [];
-        output.textContent = "";
 
         // Add values from text inputs to userInput array
         for (const child of userControl.children) {
@@ -21,28 +23,62 @@ addEventListener("input", (e) => {
         }
         console.log(userInput);
 
-        
-        // // displayText - test 1
-        // const displayText = output.appendChild(document.createElement("p"));
-        // displayText.classList.add("display-text");
-        // // Create string from userInput array and add to displayText <p> element in output box
-        // text = userInput.join("");
-        // // console.log(typeof text);
-        // displayText.textContent = text;
-
-
-        // displayText2 - test 2
-        const displayText2 = output.appendChild(document.createElement("div"));
-        displayText2.classList.add("display-text-2");
-
         // displayText2 test - input chars added as spans to divs, output laid out with grid (like input)
-        for (const i in userInput) {
-            box = document.createElement("div");
-            char = document.createElement("span");
-            console.log(userInput[i]);
-            char.textContent = userInput[i];
-            box.appendChild(char);
-            displayText2.appendChild(box);
+        if (displayText2.hasChildNodes()) {
 
+            console.log("has child nodes")
+            console.log(displayText2.childNodes);
+
+            const displayText2Arr = [...displayText2.childNodes];
+            console.log("DisplayText2 converted to an array");
+            console.log(displayText2Arr);
+
+            const currentDisplay = displayText2Arr.map(function (i) {
+                console.log("map function - adding text content")
+                console.log(i.firstChild.textContent);
+                return i.firstChild.textContent;
+            })
+
+            console.log("Current display values array");
+            console.log(currentDisplay);
+
+            // Check that userInput array is same length as currentDisplay array
+            if (userInput.length === currentDisplay.length) {
+                console.log("userInput and currentDisplay length is same.")
+
+                // Iterate with length of userInput array
+                for (let i = 0; i < userInput.length; i++) {
+
+                    // Compare values at same index in both arrays, if it's different then update the character
+                    if (userInput[i] !== currentDisplay[i]) {
+                        console.log("*** Change detected ***");
+                        console.log(`User input ${userInput[i]} \n Current Display ${currentDisplay[i]}`)
+
+                         displayText2.children[i].querySelector(".char").textContent = userInput[i];
+
+                    } else {
+                        // If not - log no change message
+                        console.log("No change")
+                        console.log(`User input ${userInput[i]} \n Current Display ${currentDisplay[i]}`)
+                    }
+                }
+
+            } else {
+                console.log("userInput and currentDisplay not same length...")
+            }
+        } else {
+            console.log("No child nodes - creating new");
+            for (const i in userInput) {
+                // Check if div content is same
+                
+                const box = document.createElement("div");
+                box.classList.add("box");
+                const char = document.createElement("span");
+                char.classList.add("char");
+                console.log(userInput[i]);
+                char.textContent = userInput[i];
+                box.appendChild(char);
+                displayText2.appendChild(box);
+            }
         }
     })
