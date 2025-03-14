@@ -39,19 +39,6 @@ body {
     align-content: center;
 }
 
-/* Text output <p> element */
-.display-text {
-    margin: 0 auto;
-    color: #FFF;
-    font-size: 1em;
-    word-break: break-all;
-    white-space: pre-wrap;
-    width: 3ch;
-    height: 3em;
-    border: solid 1px red;
-    line-height: 1em;
-}
-
 .display-text-2 {
     /* border: solid 1px purple; */
     margin: auto;
