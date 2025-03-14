@@ -22,7 +22,6 @@ body {
     margin: 1rem auto;
     content: "";
     width: 250px;
-    height: 250px;
     color: green;
     text-align: center;
     font-size: 1.5rem;
@@ -40,6 +39,7 @@ body {
     /* background-color: blue; */
     border-top: var(--border-green-1px);
     width: 100%;
+    aspect-ratio: 1/1;
     flex-grow: 1;
     align-content: center;
 }
