@@ -86,6 +86,7 @@ userControl.addEventListener("input", (e) => {
     // COPIED CODE - adjusted from:
     // https://stackoverflow.com/questions/15595652/focus-next-input-once-reaching-maxlength-value
 
+    // Automatically focus next or previous input in user control on input
     userControl.addEventListener("keyup", (e) => {
         let target = e.target;
         let maxLength = parseInt(target.attributes["maxlength"].value, 10);
