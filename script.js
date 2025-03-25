@@ -11,7 +11,7 @@ userControl.addEventListener("input", (e) => {
 
         // Reset
         console.log(e.target.name + e.data);
-        userInput = [];
+        let userInput = [];
 
         // Add values from text inputs to userInput array
         for (const child of userControl.children) {
@@ -22,13 +22,15 @@ userControl.addEventListener("input", (e) => {
             }
         }
         console.log(userInput);
-
-        // displayText2 test - input chars added as spans to divs, output laid out with grid (like input)
+        
+        // First if block checks whether character tiles have been added to displayText2 container by checking for child nodes
+        // displayText2 div structure: input chars added as spans to divs, output laid out with grid (like input)
         if (displayText2.hasChildNodes()) {
 
             console.log("has child nodes")
             console.log(displayText2.childNodes);
 
+            //displayText2 already has character tiles added (i.e. user input has occurred since page load)
             const displayText2Arr = [...displayText2.childNodes];
             console.log("DisplayText2 converted to an array");
             console.log(displayText2Arr);
@@ -66,19 +68,28 @@ userControl.addEventListener("input", (e) => {
             } else {
                 console.log("userInput and currentDisplay not same length...")
             }
+
+        /* 
+        No child nodes on displayText2 - creates character tiles 
+        Structure: (<div class="box">
+        <span class="char">INPUT_CHARACTER</span>
+        </div>)
+        INPUT_CHARACTER is added for each userInput text input.
+        */
         } else {
             console.log("No child nodes - creating new");
             for (const i in userInput) {
-                // Check if div content is same
-                
+                // Create elements and add classes
                 const box = document.createElement("div");
                 box.classList.add("box");
                 const char = document.createElement("span");
                 char.classList.add("char");
-                console.log(userInput[i]);
-                char.textContent = userInput[i];
                 box.appendChild(char);
                 displayText2.appendChild(box);
+
+                // Update from userInput
+                console.log(userInput[i]);
+                char.textContent = userInput[i];
             }
         }
     })

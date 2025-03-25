@@ -54,8 +54,8 @@ body {
     line-height: 95%;
     font-size: 2rem;
     animation: 
-        float 1s ease-in-out infinite alternate, 
-        spin 15s linear infinite;
+        float 1s ease-in-out infinite alternate; 
+        /* spin 15s linear infinite; */
 }
 
 .display-text-2>.box {
@@ -65,12 +65,12 @@ body {
 
 @keyframes float {
     0% {
-        gap: 0.1rem;
-        font-size: 2rem;
+        gap: 0.2rem;
+        /* font-size: 2rem; */
     }
     100% {
         gap: 0rem;
-        font-size: 1.25rem;
+        /* font-size: 1.25rem; */
         color: rgb(45, 213, 45);
     }
 }
