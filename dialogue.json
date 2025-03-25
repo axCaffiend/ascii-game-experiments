@@ -1,0 +1,14 @@
+{
+    "message" : {
+        "start" : "I am locked - find a key.",
+        "incorrect": "Try again",
+        "solved" : "Unlocked - starting ASCend..."
+    },
+    "rune": {
+        "key": [
+            " ", "=", "+",
+            " ", " ", "|",
+            " ", " ", "O"
+        ]
+    } 
+}

@@ -1,10 +1,38 @@
 const userControl = document.querySelector(".control");
 const output = document.querySelector(".display .output");
+const messageDisplay = document.querySelector(".display .message");
+// Add a test div for outputting display
 const displayText2 = output.appendChild(document.createElement("div"));
 displayText2.classList.add("display-text-2");
 
-// Array for getting text input values in userControl panel
-let userInput = [];
+//Import dialogue.json as object
+let dialogueData;
+
+fetch("./dialogue.json")
+.then((response) => {
+    if(!response.ok) {
+        throw new Error(`HTTP error: ${response.status}`);
+    } else {
+        console.log(`JSON retrieved\nstatus: ${response.status}`);
+        return response.json();
+    }
+})
+.then((json) => {
+    console.log("*** Loaded dialogue.json ***")
+    dialogueData = json;
+    // console.log(dialogueData["message"]["start"]);
+    displayMsg(dialogueData);
+})
+.catch((error) => {
+    console.error(`Could not load dialogue.json: ${error}`);
+});
+
+function displayMsg (data) {
+    console.log("*** displayMsg running ***");
+    messageDisplay.textContent = data.message.start;
+
+}
+
 
 // Upddates userInput array on user inputs change
 userControl.addEventListener("input", (e) => {

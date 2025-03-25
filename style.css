@@ -6,11 +6,18 @@
 body {
     font-family: var(--main-font);
     font-size: 1rem;
+    color: #fff;
     background-color: #000;
 }
 
 #game-container {
     height: 95vh;
+}
+
+/* ----- MESSAGE ----- */
+.message {
+    background-color: #000;
+    border-top: solid 1px green;
 }
 
 /* ---- OUTPUT BOX ----- */
