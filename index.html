@@ -11,6 +11,7 @@
 </head>
 <body>
      <div id="game-container" class="ripple">
+        <div class="unlock-sequence"></div>
 
         <!-- OUTPUT DISPLAY -->
          <div class="display">
@@ -19,28 +20,31 @@
             <p class="message"></p>
         </div>
 
-        <!-- USER CONTROLS -->
-         <div class="control">
-            <input type="text" maxlength="1" id="ui-1" class="user-input" name="ui1">
-            <input type="text" maxlength="1" id="ui-2" class="user-input" name="ui2">
-            <input type="text" maxlength="1" id="ui-3" class="user-input" name="ui3">
-            <input type="text" maxlength="1" id="ui-4" class="user-input" name="ui4">
-            <input type="text" maxlength="1" id="ui-5" class="user-input" name="ui5">
-            <input type="text" maxlength="1" id="ui-6" class="user-input" name="ui6">
-            <input type="text" maxlength="1" id="ui-7" class="user-input" name="ui7">
-            <input type="text" maxlength="1" id="ui-8" class="user-input" name="ui8">
-            <input type="text" maxlength="1" id="ui-9" class="user-input" name="ui9">
-        </div>
-
-        <!-- BUTTONS -->
-        <div class="buttons">
-            <button type="button" class="btn enter-btn">Enter</button>
+        <div class="user-control-container">
+            <!-- USER CONTROLS -->
+             <div class="control">
+                <input type="text" maxlength="1" id="ui-1" class="user-input" name="ui1">
+                <input type="text" maxlength="1" id="ui-2" class="user-input" name="ui2">
+                <input type="text" maxlength="1" id="ui-3" class="user-input" name="ui3">
+                <input type="text" maxlength="1" id="ui-4" class="user-input" name="ui4">
+                <input type="text" maxlength="1" id="ui-5" class="user-input" name="ui5">
+                <input type="text" maxlength="1" id="ui-6" class="user-input" name="ui6">
+                <input type="text" maxlength="1" id="ui-7" class="user-input" name="ui7">
+                <input type="text" maxlength="1" id="ui-8" class="user-input" name="ui8">
+                <input type="text" maxlength="1" id="ui-9" class="user-input" name="ui9">
+            </div>
+            <!-- BUTTONS -->
+            <div class="buttons">
+                <button type="button" class="btn enter-btn">Enter</button>
+                <button type="button" class="btn toggle-unlock">Show unlock</button>
+            </div>
         </div>
 
     <!-- Game container end -->
      </div>
 
      <!-- SCRIPTS -->
-    <script src="script.js"></script>
+    <script src="script.js" crossorigin type="module"></script>
+    <script src="show-unlock.js" crossorigin type="module"></script>
 </body>
 </html>

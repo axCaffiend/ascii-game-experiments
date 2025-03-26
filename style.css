@@ -18,6 +18,10 @@ body {
 .message {
     background-color: #000;
     border-top: solid 1px green;
+    font-size: 1rem;
+    margin: 0;
+    padding: 0.25rem;
+    height: 3rem;
 }
 
 /* ---- OUTPUT BOX ----- */
@@ -93,17 +97,24 @@ body {
 
 /* ---- USER CONTROLS ---- */
 
+.user-control-container {
+    display: flex;
+    justify-content: center;
+}
+
+/* User input container */
 .control {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     width: fit-content;
-    margin: 1rem auto;
+    margin: 1rem;
     justify-content: center;
     padding: 0.25rem;
     border: double 0.25rem green;
     background: #000;
 }
 
+/* User input text fields */
 .user-input {
     /* background-color: grey; */
     background-color: transparent;
@@ -130,24 +141,24 @@ body {
 
 .buttons {
     display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    gap: 1rem;
 }
 
 .btn {
+    display: block;
     color: green;
     background-color: #000;
     border: solid 0.1rem green;
     font-family: inherit;
-    font-size: 1.5rem;
+    font-size: 1.1rem;
 }
 
 .btn:focus {
     outline: none;
     background: green;
     color: #000;
-}
-
-.enter-btn {
-    margin: 0 auto;
 }
 
 /* ----- BACKGROUND EFFECTS ----- */
@@ -170,5 +181,176 @@ body {
     }
     100% {
         background-position-y: 3vh;
+    }
+}
+
+
+/* ----- UNLOCK SEQUENCE ----- */
+
+.unlock-sequence {
+    /* display: none; */
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-family: var(--main-font);
+    transform: translate(50vw, 32vh);
+    /* opacity: 0; */
+    width: 1px;
+    height: 1px;
+    background-color: lightgreen;
+    white-space: pre-wrap;
+    text-align: center;
+    align-content: center;
+    overflow: hidden;
+}
+
+.show-sequence {
+    font-weight: 700;
+    animation: title-seq 3s linear forwards;
+}
+
+@keyframes title-seq {
+    0% {
+        opacity: 0;
+    }
+    15% {
+        background-color: rgb(0, 128, 0);
+        opacity: 1;
+        width: 100%;
+        transform: translate(0%, 32vh);
+        height: 2px;
+    }
+    17% {
+        background-color: rgb(144, 238, 144);
+    }
+    20% {
+        background-color: rgb(0, 255, 0);
+    }
+    
+    23% {
+        background-color: rgb(255, 0, 0);
+    }
+    
+    27% {
+        background-color: rgb(0,0,255);
+    }
+    
+    30% {
+        background-color: rgb(0, 255, 0);
+    }
+
+    35% {
+        background-color: rgb(255, 255, 255);
+    }
+    38% {
+        background-color: rgb(144, 238, 144);
+    }
+    42% {
+        background-color: rgb(0, 255, 0);
+    }
+    
+    45% {
+        background-color: rgb(255, 0, 0);
+    }
+    
+    50% {
+        background-color: rgb(0,0,255);
+    }
+    
+    55% {
+        background-color: rgb(0, 255, 0);
+    }
+
+    60% {
+        background-color: rgb(255, 255, 255);
+    }
+    
+    75% {
+        transform: translate(0%, 32vh);
+        height: 3px;
+        
+    }
+    80% {
+        /* color: rgb(0,0,0); */
+        font-size: 0.1rem;
+        background-color: #000;
+        transform: translate(0%, 0%);
+        width: 100vw;
+        height: 100vh;
+    }
+    90% {
+        color: rgb(0, 128, 0);
+    }
+    100% {
+        font-size: 1rem;
+        color: rgb(255,255,255);
+        background-color: #000;
+        transform: translate(0%, 0%);
+        width: 100vw;
+        height: 100vh;
+    }
+}
+
+.titleGlow {
+    animation: titleBlur 2s alternate infinite;
+}
+
+@keyframes titleBlur {
+    0% {
+        filter: blur(0);
+        text-decoration: none;
+    }
+    80% {
+        filter: blur(0px);
+        text-decoration: none;
+    }
+    95% {
+        filter: blur(1px);
+        text-decoration: underline solid #fff 1px;
+    }
+    100% {
+        filter: blur(8px);
+        text-decoration: underline solid green 3px;
+    }
+}
+
+.titleGlow::before, .titleGlow::after {
+    display: block;
+    margin: 2rem 50%;
+    font-size: 2rem;
+    font-weight: 300;
+    content: "<<<<";
+    writing-mode: vertical-rl;
+    text-orientation: sideways-right;
+    opacity: 0;
+    text-decoration: none;
+}
+
+.titleGlow::before {
+    animation: titleArrowUp 2s alternate 2s infinite forwards;
+}
+
+@keyframes titleArrowUp {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(-1rem);
+    }
+}
+
+.titleGlow::after {
+    animation: titleArrowDown 2s alternate 4s infinite forwards;
+}
+
+@keyframes titleArrowDown {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(1rem);
     }
 }
